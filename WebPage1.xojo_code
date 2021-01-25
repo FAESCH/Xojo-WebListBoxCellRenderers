@@ -28,7 +28,6 @@ Begin WebPage WebPage1
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
-   _mName          =   ""
    _mPanelIndex    =   -1
    Begin WebListbox Listbox1
       ColumnCount     =   3
@@ -114,13 +113,13 @@ End
 		    
 		    Var row As Integer = Me.LastAddedRowIndex
 		    // Custom cells can only be assigned individually
-		    Me.CellValueAt(row,2) = New ButtonColumn("Edit", "Delete")
+		    Me.CellValueAt(row,2) = New ButtonColumn(new WebListBoxButton("Edit", "edit"), New WebListBoxButton("Delete", "delete"))
 		  Next i
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub CustomCellAction(row as Integer, column as Integer, identifier as string, value as variant)
-		  MessageBox str(row) + ":" + str(column) + ":" + identifier
+		  MessageBox str(row) + ":" + str(column) + ":" + identifier + ":" + str(value)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

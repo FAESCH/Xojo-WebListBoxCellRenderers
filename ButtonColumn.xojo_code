@@ -6,12 +6,14 @@ Inherits WebListboxCellRenderer
 		  // Restore the values of the column to the object
 		  
 		  Var obj As jsonitem = js.Value("captions")
+		  Var tagsJS As JSONItem = js.Value("tags")
 		  
 		  Captions.ResizeTo(-1)
 		  If obj.IsArray Then
 		    Var c As Integer = obj.Count-1
 		    For i As Integer = 0 To c
 		      Captions.AddRow obj.Value(i)
+		      Tags.AddRow tagsJS.Value(i)
 		    Next
 		  End If
 		End Sub
@@ -42,6 +44,7 @@ Inherits WebListboxCellRenderer
 		  code.AddRow "    button.type = 'button';"
 		  code.AddRow "    button.className = 'btn btn-warning btn-sm';"
 		  code.AddRow "    button.innerHTML = data.captions[i];"
+		  code.AddRow "    button.dataset.tag = data.tags[i];"
 		  code.AddRow "    button.style.marginRight = '6px'"
 		  
 		  // Handle clicking on the button
@@ -51,7 +54,7 @@ Inherits WebListboxCellRenderer
 		  code.AddRow "      obj.set('row', rowIndex);" // All extensions should include the row (default is -1)
 		  code.AddRow "      obj.set('column', columnIndex);" // All extensions should include the column (default is -1)
 		  code.AddRow "      obj.set('identifier', data.captions[i]);" // All extensions should include an identifier (default is "")
-		  code.AddRow "      obj.set('value', null);" // Including a value is optional (default is null)
+		  code.AddRow "      obj.set('value', button.dataset.tag);" // Including a value is optional (default is null)
 		  code.AddRow "      XojoWeb.controls.lookup(controlID).triggerServerEvent('CustomCellAction', obj);"
 		  code.AddRow "      return false;"
 		  code.AddRow "    });"
@@ -75,24 +78,35 @@ Inherits WebListboxCellRenderer
 		  
 		  Var js As New JSONItem
 		  js.Value("captions") = Captions
+		  js.Value("tags") = Tags
 		  
-		  return js
+		  Return js
 		End Function
 	#tag EndEvent
 
 
 	#tag Method, Flags = &h0
-		Sub Constructor(ParamArray captions as string)
+		Sub Constructor(ParamArray WLB as WebListBoxButton)
 		  // Calling the overridden superclass constructor.
 		  Super.Constructor
 		  
-		  Self.Captions = captions
+		  For Each Button As WebListBoxButton In WLB
+		    
+		    Captions.Add(Button.Caption)
+		    Tags.Add(Button.Tag)
+		    
+		  Next
+		  
 		End Sub
 	#tag EndMethod
 
 
-	#tag Property, Flags = &h0
-		Captions() As String
+	#tag Property, Flags = &h21
+		Private Captions() As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private Tags() As String
 	#tag EndProperty
 
 
