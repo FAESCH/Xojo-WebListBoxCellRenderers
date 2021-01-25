@@ -113,7 +113,15 @@ End
 		    
 		    Var row As Integer = Me.LastAddedRowIndex
 		    // Custom cells can only be assigned individually
-		    Me.CellValueAt(row,2) = New ButtonColumn(new WebListBoxButton("Edit", "edit"), New WebListBoxButton("Delete", "delete"))
+		    Me.CellValueAt(row,2) = New ButtonColumn(New WebListBoxButton("Primary", "primary", WebListBoxButton.ButtonStyles.Primary), _
+		    New WebListBoxButton("Secondary", "secondary", WebListBoxButton.ButtonStyles.Secondary), _
+		    New WebListBoxButton("Success", "success", WebListBoxButton.ButtonStyles.Success), _
+		    New WebListBoxButton("Danger", "danger", WebListBoxButton.ButtonStyles.Danger), _
+		    New WebListBoxButton("Warning", "warning", WebListBoxButton.ButtonStyles.Warning), _
+		    New WebListBoxButton("Info", "info", WebListBoxButton.ButtonStyles.Info), _
+		    New WebListBoxButton("Light", "light", WebListBoxButton.ButtonStyles.Light), _
+		    New WebListBoxButton("Dark", "dark", WebListBoxButton.ButtonStyles.Dark), _
+		    New WebListBoxButton("Link", "link", WebListBoxButton.ButtonStyles.Link))
 		  Next i
 		End Sub
 	#tag EndEvent

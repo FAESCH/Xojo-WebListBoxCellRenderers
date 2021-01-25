@@ -2,7 +2,8 @@
 Protected Class WebListBoxButton
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  
+		  //Set the default button style
+		  ButtonStyle = ButtonStyles.Info
 		End Sub
 	#tag EndMethod
 
@@ -10,9 +11,24 @@ Protected Class WebListBoxButton
 		Sub Constructor(Caption as String, Tag as Variant)
 		  Me.Caption = Caption
 		  Me.Tag = Tag
+		  
+		  //Set the default button style
+		  ButtonStyle = ButtonStyles.Info
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub Constructor(Caption as String, Tag as Variant, ButtonStyle as ButtonStyles)
+		  Me.Caption = Caption
+		  Me.Tag = Tag
+		  Me.ButtonStyle = ButtonStyle
+		End Sub
+	#tag EndMethod
+
+
+	#tag Property, Flags = &h0
+		ButtonStyle As ButtonStyles
+	#tag EndProperty
 
 	#tag Property, Flags = &h0
 		Caption As String
@@ -21,6 +37,19 @@ Protected Class WebListBoxButton
 	#tag Property, Flags = &h0
 		Tag As Variant
 	#tag EndProperty
+
+
+	#tag Enum, Name = ButtonStyles, Type = Integer, Flags = &h0
+		Primary
+		  Secondary
+		  Success
+		  Danger
+		  Warning
+		  Info
+		  Light
+		  Dark
+		Link
+	#tag EndEnum
 
 
 	#tag ViewBehavior

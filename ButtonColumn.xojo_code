@@ -7,6 +7,7 @@ Inherits WebListboxCellRenderer
 		  
 		  Var obj As jsonitem = js.Value("captions")
 		  Var tagsJS As JSONItem = js.Value("tags")
+		  Var styleJS As JSONItem = js.Value("buttonstyles")
 		  
 		  Captions.ResizeTo(-1)
 		  If obj.IsArray Then
@@ -14,6 +15,7 @@ Inherits WebListboxCellRenderer
 		    For i As Integer = 0 To c
 		      Captions.AddRow obj.Value(i)
 		      Tags.AddRow tagsJS.Value(i)
+		      ButtonStyles.AddRow styleJS.Value(i)
 		    Next
 		  End If
 		End Sub
@@ -42,7 +44,7 @@ Inherits WebListboxCellRenderer
 		  code.AddRow "   for(let i=0;i<data.captions.length;i++) {"
 		  code.AddRow "    let button = document.createElement('button');"
 		  code.AddRow "    button.type = 'button';"
-		  code.AddRow "    button.className = 'btn btn-warning btn-sm';"
+		  code.AddRow "    button.className = 'btn ' + data.buttonstyles[i] + ' btn-sm';"
 		  code.AddRow "    button.innerHTML = data.captions[i];"
 		  code.AddRow "    button.dataset.tag = data.tags[i];"
 		  code.AddRow "    button.style.marginRight = '6px'"
@@ -79,6 +81,7 @@ Inherits WebListboxCellRenderer
 		  Var js As New JSONItem
 		  js.Value("captions") = Captions
 		  js.Value("tags") = Tags
+		  js.Value("buttonstyles") = ButtonStyles
 		  
 		  Return js
 		End Function
@@ -95,11 +98,41 @@ Inherits WebListboxCellRenderer
 		    Captions.Add(Button.Caption)
 		    Tags.Add(Button.Tag)
 		    
+		    Select Case Button.ButtonStyle
+		      
+		    Case WebListBoxButton.ButtonStyles.Primary
+		      ButtonStyles.Add("btn-primary")
+		    Case WebListBoxButton.ButtonStyles.Secondary
+		      ButtonStyles.Add("btn-secondary")
+		    Case WebListBoxButton.ButtonStyles.Success
+		      ButtonStyles.Add("btn-success")
+		    Case WebListBoxButton.ButtonStyles.Danger
+		      ButtonStyles.Add("btn-danger")
+		    Case WebListBoxButton.ButtonStyles.Warning
+		      ButtonStyles.Add("btn-warning")
+		    Case WebListBoxButton.ButtonStyles.Info
+		      ButtonStyles.Add("btn-info")
+		    Case WebListBoxButton.ButtonStyles.Light
+		      ButtonStyles.Add("btn-light")
+		    Case WebListBoxButton.ButtonStyles.Dark
+		      ButtonStyles.Add("btn-dark")
+		    Case WebListBoxButton.ButtonStyles.Link
+		      ButtonStyles.Add("btn-link")
+		      
+		    Case Else
+		      ButtonStyles.Add("btn-info")
+		      
+		    End Select
+		    
 		  Next
 		  
 		End Sub
 	#tag EndMethod
 
+
+	#tag Property, Flags = &h21
+		Private ButtonStyles() As String
+	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private Captions() As String
