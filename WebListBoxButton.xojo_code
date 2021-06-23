@@ -3,7 +3,7 @@ Protected Class WebListBoxButton
 	#tag Method, Flags = &h0
 		Sub Constructor()
 		  //Set the default button style
-		  ButtonStyle = ButtonStyles.Info
+		  ButtonStyle = WebUIControl.Indicators.Info
 		End Sub
 	#tag EndMethod
 
@@ -13,12 +13,12 @@ Protected Class WebListBoxButton
 		  Me.Tag = Tag
 		  
 		  //Set the default button style
-		  ButtonStyle = ButtonStyles.Info
+		  ButtonStyle = WebUIControl.Indicators.Default
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Constructor(Caption as String, Tag as Variant, ButtonStyle as ButtonStyles)
+		Sub Constructor(Caption as String, Tag as Variant, ButtonStyle as WebUIControl.Indicators)
 		  Me.Caption = Caption
 		  Me.Tag = Tag
 		  Me.ButtonStyle = ButtonStyle
@@ -27,7 +27,7 @@ Protected Class WebListBoxButton
 
 
 	#tag Property, Flags = &h0
-		ButtonStyle As ButtonStyles
+		ButtonStyle As WebUIControl.Indicators
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -98,7 +98,15 @@ Protected Class WebListBoxButton
 			Visible=false
 			Group="Behavior"
 			InitialValue=""
-			Type="Integer"
+			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="ButtonStyle"
+			Visible=false
+			Group="Behavior"
+			InitialValue=""
+			Type="ButtonStyles"
 			EditorType=""
 		#tag EndViewProperty
 	#tag EndViewBehavior

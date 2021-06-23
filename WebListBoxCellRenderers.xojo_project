@@ -1,5 +1,5 @@
 Type=Web2
-RBProjectVersion=2020.021
+RBProjectVersion=2021.02
 MinIDEVersion=20200200
 OrigIDEVersion=20200201
 Class=App;App.xojo_code;&h000000005F2F6FFF;&h0000000000000000;false
@@ -22,7 +22,7 @@ WinInternalName=
 WinProductName=
 WinFileDescription=
 AutoIncrementVersionInformation=False
-BuildFlags=&h8100
+BuildFlags=&h1100
 BuildLanguage=&h0
 DebugLanguage=&h0
 Region=

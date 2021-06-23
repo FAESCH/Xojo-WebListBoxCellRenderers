@@ -42,14 +42,15 @@ Begin WebPage WebPage1
       InitialValue    =   "Column 1 "
       LastAddedRowIndex=   0
       Left            =   20
-      LockBottom      =   False
+      LockBottom      =   True
       LockedInPosition=   False
       LockHorizontal  =   False
       LockLeft        =   True
-      LockRight       =   False
+      LockRight       =   True
       LockTop         =   True
       LockVertical    =   False
       NoRowsMessage   =   ""
+      ProcessingMessage=   ""
       RowCount        =   0
       RowSelectionType=   1
       Scope           =   0
@@ -113,21 +114,21 @@ End
 		    
 		    Var row As Integer = Me.LastAddedRowIndex
 		    // Custom cells can only be assigned individually
-		    Me.CellValueAt(row,2) = New ButtonColumn(New WebListBoxButton("Primary", "primary", WebListBoxButton.ButtonStyles.Primary), _
-		    New WebListBoxButton("Secondary", "secondary", WebListBoxButton.ButtonStyles.Secondary), _
-		    New WebListBoxButton("Success", "success", WebListBoxButton.ButtonStyles.Success), _
-		    New WebListBoxButton("Danger", "danger", WebListBoxButton.ButtonStyles.Danger), _
-		    New WebListBoxButton("Warning", "warning", WebListBoxButton.ButtonStyles.Warning), _
-		    New WebListBoxButton("Info", "info", WebListBoxButton.ButtonStyles.Info), _
-		    New WebListBoxButton("Light", "light", WebListBoxButton.ButtonStyles.Light), _
-		    New WebListBoxButton("Dark", "dark", WebListBoxButton.ButtonStyles.Dark), _
-		    New WebListBoxButton("Link", "link", WebListBoxButton.ButtonStyles.Link))
+		    Me.CellValueAt(row,2) = New ButtonColumn(New WebListBoxButton("Primary", "primary", WebUIControl.Indicators.Primary), _
+		    New WebListBoxButton("Secondary", "secondary", WebUIControl.Indicators.Secondary), _
+		    New WebListBoxButton("Success", "success", WebUIControl.Indicators.Success), _
+		    New WebListBoxButton("Danger", "danger", WebUIControl.Indicators.Danger), _
+		    New WebListBoxButton("Warning", "warning", WebUIControl.Indicators.Warning), _
+		    New WebListBoxButton("Info", "info", WebUIControl.Indicators.Info), _
+		    New WebListBoxButton("Light", "light", WebUIControl.Indicators.Light), _
+		    New WebListBoxButton("Dark", "dark", WebUIControl.Indicators.Dark), _
+		    New WebListBoxButton("Link", "link", WebUIControl.Indicators.Link))
 		  Next i
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub CustomCellAction(row as Integer, column as Integer, identifier as string, value as variant)
-		  MessageBox str(row) + ":" + str(column) + ":" + identifier + ":" + str(value)
+		  MessageBox "Row: "+ str(row) + " Column: " + str(column) + " Identifier: " + identifier + " Value: " + str(value)
 		End Sub
 	#tag EndEvent
 #tag EndEvents

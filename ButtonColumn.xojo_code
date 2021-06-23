@@ -100,23 +100,23 @@ Inherits WebListboxCellRenderer
 		    
 		    Select Case Button.ButtonStyle
 		      
-		    Case WebListBoxButton.ButtonStyles.Primary
+		    Case WebUIControl.Indicators.Primary
 		      ButtonStyles.Add("btn-primary")
-		    Case WebListBoxButton.ButtonStyles.Secondary
+		    Case WebUIControl.Indicators.Secondary
 		      ButtonStyles.Add("btn-secondary")
-		    Case WebListBoxButton.ButtonStyles.Success
+		    Case WebUIControl.Indicators.Success
 		      ButtonStyles.Add("btn-success")
-		    Case WebListBoxButton.ButtonStyles.Danger
+		    Case WebUIControl.Indicators.Danger
 		      ButtonStyles.Add("btn-danger")
-		    Case WebListBoxButton.ButtonStyles.Warning
+		    Case WebUIControl.Indicators.Warning
 		      ButtonStyles.Add("btn-warning")
-		    Case WebListBoxButton.ButtonStyles.Info
+		    Case WebUIControl.Indicators.Info
 		      ButtonStyles.Add("btn-info")
-		    Case WebListBoxButton.ButtonStyles.Light
+		    Case WebUIControl.Indicators.Light
 		      ButtonStyles.Add("btn-light")
-		    Case WebListBoxButton.ButtonStyles.Dark
+		    Case WebUIControl.Indicators.Dark
 		      ButtonStyles.Add("btn-dark")
-		    Case WebListBoxButton.ButtonStyles.Link
+		    Case WebUIControl.Indicators.Link
 		      ButtonStyles.Add("btn-link")
 		      
 		    Case Else
